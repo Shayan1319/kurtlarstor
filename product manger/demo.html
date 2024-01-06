@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <label class="form-label" for="Padding">Padding Top</label>
+    <input type="number" class="form-control" placeholder="Padding" name="Padding" id="Padding">
+
+    <label class="form-label" for="Width">Width</label>
+    <input type="number" class="form-control" placeholder="Width" name="Width" id="Width">
+
+    <label class="form-label" for="Height">Height</label>
+    <input type="number" class="form-control" placeholder="Height" name="Height" id="Height">
+
+    <div id="canvas-section" class="canvas-section">
+        <div class="border canvas border-danger m-auto border-2" id="1phpcanvas"></div>
+    </div>
+
+    <script>
+        // Function to update canvas styles
+        function updateCanvasStyles() {
+            var padding = $("#Padding").val() + "px";
+            var width = $("#Width").val() + "px";
+            var height = $("#Height").val() + "px";
+
+            console.log("Padding:", padding);
+            console.log("Width:", width);
+            console.log("Height:", height);
+
+            // Set padding-top for canvas-section
+            $("#canvas-section").css("padding-top", padding);
+
+            // Set width and height for 1phpcanvas
+            $("#1phpcanvas").css({
+                "width": width,
+                "height": height
+            });
+        }
+
+        // Attach the function to input change events
+        $("#Padding, #Width, #Height").on("input", updateCanvasStyles);
+    </script>
+
+</body>
+
+</html>

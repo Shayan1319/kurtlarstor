@@ -1,3 +1,6 @@
+<?php
+include ('../links/db.php');
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,9 +8,7 @@
 </head>
 <body>
 <div class="container-fluid p-0 page-body-wrapper m-0 w-100">
-            <?php include('link/side.php')?>
-    <!-- partial:partials/_navbar.html -->
-    <!-- partial -->
+    <?php include('link/side.php')?>
     <div class="main-panel">
         <div class="content-wrapper">
             <?php include ('link/nav.php')?>
@@ -41,18 +42,25 @@
                         </div>
                     </nav>     
                 </div>
+                <?php 
+                $selectproduct=mysqli_query($conn,"SELECT * FROM `product`");
+                while($product=mysqli_fetch_array($selectproduct)){
+                ?>
                 <div class="col-sm-12 col-md-4 col-lg-4 p-3">
-                    <a href="designe.php">
-                    <div class="card text-light bg-dark" style="background-image: url('../assets/img/designe_t_shirt_bg.gif');height: 275px;background-size: cover;" >
+                    <?php 
+                        $id= $product['Bulid id'];
+                        $ide = base64_encode($id);
+                    ?>
+                    <a href="titel.php?k=<?php echo $ide?>">
+                    <div class="card text-light bg-dark" style="background-image: url('../assets/img/<?php echo $product['Image']?>');height: 275px;background-size: cover;" >
                        <div class="float-end">
-                       <button type="button" class="btn btn-dark btn-icon-text float-end m-2"> Create <i class="mdi mdi-border-color"></i></button>
+                       <button type="button" class="btn btn-dark btn-icon-text float-end m-2"><?php echo $product['Name']?><i class="mdi mdi-border-color"></i></button>
                        </div>
-                       <div class="card-footer position-absolute bottom-0">
-                           This is some text within a card body.
-                       </div>
+                       <div class="card-footer position-absolute bottom-0"><?php echo $product['Description']?></div>
                    </div>
                     </a>
                 </div>
+                <?php }?>
             </div>
         </div>
     </div>

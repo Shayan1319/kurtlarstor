@@ -2,7 +2,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$db="kurtlard_kurtlar";
+$db="kurtalr_stor";
 // if i change the database name so 
 // Create connection
 $conn = mysqli_connect($servername, $username, $password,$db);
